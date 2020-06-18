@@ -2,6 +2,7 @@ FROM debian:buster-slim
 
 LABEL maintainer="Brett - github.com/synixebrett"
 
+RUN dpkg --add-architecture i386
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends --no-install-suggests \
         python3 \
@@ -9,7 +10,7 @@ RUN apt-get install -y --no-install-recommends --no-install-suggests \
         lib32gcc1 \
         wget \
         ca-certificates \
-        libtbb2
+        libtbb2:i386
 RUN apt-get remove --purge -y
 RUN apt-get clean autoclean
 RUN apt-get autoremove -y
